@@ -10,9 +10,7 @@ MongoClient.connect(uri, (err, client) => {
     if (err) return console.log(err)
     db = client.db('Crud')
    
-    app.listen(3000, () => {
-      console.log('Server running on port 3000')
-    })
+    app.listen(3000)
   })
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -37,13 +35,12 @@ app.post('/show', (req, res) => {
         if (err) return console.log(err)
 
         console.log('salvo no banco de dados')
-        res.redirect('/')
+        res.redirect('/show')
     })
 })
 
 
-app.route('/edit/:id')
-.get((req, res) => {
+app.route('/edit/:id').get((req, res) => {
   var id = req.params.id
  
   db.collection('data').find(ObjectId(id)).toArray((err, result) => {
@@ -53,18 +50,35 @@ app.route('/edit/:id')
 })
 .post((req, res) => {
   var id = req.params.id
+  var user = req.body.user
   var name = req.body.name
   var surname = req.body.surname
+  var email = req.body.email
+  var celular = req.body.celular
+  var cpf = req.body.cpf
+  var rg = req.body.rg
+  var endereco = req.body.endereco
+  var cidade = req.body.cidade
+  var uf = req.body.uf
+
  
   db.collection('data').updateOne({_id: ObjectId(id)}, {
     $set: {
+      user:user,
       name: name,
-      surname: surname
+      surname: surname,
+      email: email,
+      celular: celular,
+      cpf: cpf,
+      rg: rg,
+      endereco: endereco,
+      cidade: cidade,
+      uf: uf
     }
   }, (err, result) => {
     if (err) return res.send(err)
     res.redirect('/show')
-    console.log('Atualizado no Banco de Dados')
+   Alert('Atualizado no Banco de Dados')
   })
 })
 

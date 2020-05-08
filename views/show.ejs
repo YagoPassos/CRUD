@@ -1,30 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>My CRUD in NodeJS</title>
 </head>
+
 <body>
- 
-<h2>Registros</h2>
-  <table border="1">
-    <thead>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      outline: none;
+      text-decoration: none;
+      box-sizing: border-box;
+      border: none;
+      font-family: 'Roboto', sans-serif;
+      ;
+    }
+
+    a {
+      color: white;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, rgb(207, 99, 28), rgb(255, 198, 42));
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .title {
+      color: rgb(83, 67, 179);
+      text-align: center;
+      font-size: 42px;
+    }
+
+    .container {
+      position: absolute;
+      width: 100%;
+      padding: 0 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    table {
+      text-align: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      top: 50px;
+    }
+
+    td {
+      border: 1px solid black;
+      background-color: rgba(0, 0, 0, 0.103);
+      padding: 5px;
+      padding-left: 10px;
+    }
+
+    td :hover {
+      background-color: rgba(0, 0, 0, 0.301);
+    }
+
+    input {
+      width: 40%;
+      height: 100%;
+      margin-top: 20px;
+      background-color: rgb(158, 158, 158);
+      max-height: 35px;
+      max-width: 500px;
+      border-radius: 50px;
+      padding-left: 20px;
+    }
+
+    button {
+      background: linear-gradient(rgb(20, 22, 105), rgb(29, 28, 104));
+      width: 50%;
+      height: 50%;
+      max-height: 55px;
+      max-width: 100px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      color: rgb(219, 219, 219);
+      border-radius: 50px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 5%;
+      right: 50%;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 60px;
+      color: white;
+      padding-top: 50px;
+    }
+  </style>
+
+
+  <h2>Registros</h2>
+
+  <div class="container">
+    <table border="1">
+      <thead>
         <tr>
-            <td>Nome</td>
-            <td>Sobrenome</td>
-            <td>Ação</td>
+          <td>Usuario</td>
+          <td>Nome</td>
+          <td>Sobrenome</td>
+          <td>Email</td>
+          <td>Celular</td>
+          <td>CPF</td>
+          <td>RG</td>
+          <td>Endereço</td>
+          <td>Cidade</td>
+          <td>UF</td>
         </tr>
-    </thead>
-    <tbody>
-    <% data.forEach(function(details) { %>
+      </thead>
+      <tbody>
+        <% data.forEach(function(details) { %>
         <tr>
-            <td><%= details.name %></td>
-            <td><%= details.surname %></td>
-            <td><a href="/edit/<%= details._id %>">Editar</a> - <a href="/delete/<%= details._id %>">Deletar</a></td>
+          <td><%= details.user %></td>
+          <td><%= details.name %></td>
+          <td><%= details.surname %></td>
+          <td><%= details.email %></td>
+          <td><%= details.celular %></td>
+          <td><%= details.cpf %></td>
+          <td><%= details.rg %></td>
+          <td><%= details.endereco %></td>
+          <td><%= details.cidade %></td>
+          <td><%= details.uf %></td>
+
+          <td><a href="/edit/<%= details._id %>">Editar</a> - <a href="/delete/<%= details._id %>">Deletar</a></td>
         </tr>
         <% }) %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
   <button><a href="/">Novo</a></button>
 </body>
+
 </html>
