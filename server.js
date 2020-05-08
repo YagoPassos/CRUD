@@ -78,7 +78,7 @@ app.route('/edit/:id').get((req, res) => {
   }, (err, result) => {
     if (err) return res.send(err)
     res.redirect('/show')
-   Alert('Atualizado no Banco de Dados')
+   console.log('Atualizado no Banco de Dados')
   })
 })
 
