@@ -94,16 +94,16 @@
 <h2>Editar Registro</h2>
   <% data.forEach(function(details) { %>
     <form action="/edit/<%= details._id %>" method="POST">
-      <input type="text" placeholder="Usuário" name="usuario" />
+      <input type="text" placeholder="Usuário" value="<%= details.surname %>" name="user" />
       <input type="text" placeholder="Nome" value="<%= details.name %>" name="name">
       <input type="text" placeholder="Sobrenome" value="<%= details.surname %>" name="surname">
-      <input type="email" placeholder="Email" name="email" />
-      <input type="text" placeholder="Celular" name="celular" />
-      <input type="text" placeholder="CPF" name="cpf" />
-      <input type="text" placeholder="RG" name="rg" />
-      <input type="text" placeholder="Endereço" name="endereço" />
-      <input type="text" placeholder="Cidade" name="cidade" />
-      <input type="text" classname="uf" placeholder="UF" name="uf" />
+      <input type="email" placeholder="Email" value="<%= details.email %>" name="email" />
+      <input type="text" placeholder="Celular" value="<%= details.celular %>" name="celular" />
+      <input type="text" placeholder="CPF" value="<%= details.cpf %>" name="cpf" />
+      <input type="text" placeholder="RG" value="<%= details.rg %>" name="rg" />
+      <input type="text" placeholder="Endereço" value="<%= details.endereco %>" name="endereco" />
+      <input type="text" placeholder="Cidade" value="<%= details.cidade %>" name="cidade" />
+      <input type="text" classname="uf" placeholder="UF" value="<%= details.uf %>" name="uf" />
       <br />
       <button><a href="/show">Todos</a></button>
       <button type="submit">Editar</button>
